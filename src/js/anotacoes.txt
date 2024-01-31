@@ -1,0 +1,14 @@
+1. **Empático:** Uma pessoa que demonstra grande capacidade de compreender e se conectar emocionalmente com os outros.
+
+2. **Inovador:** Indivíduos criativos, sempre buscando novas ideias e soluções para desafios.
+
+3. **Resiliente:** Aqueles que lidam bem com adversidades, adaptando-se e superando obstáculos com determinação.
+
+4. **Visionário:** Pessoas com uma perspectiva de longo prazo e habilidade para enxergar além do presente, planejando e buscando objetivos futuros.
+
+Empático , Inovador , Resiliente, Visionário
+
+const empathetic
+const innovative
+const resilient
+const visionary
