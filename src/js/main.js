@@ -515,6 +515,11 @@ const questions = [
 
 let currentQuestion = 0;
 
+var empathetic = 0;
+var innovative = 0;
+var resilient = 0;
+var visionary = 0;
+
 function showQuestion() {
   const questionElement = document.getElementById("question");
   const choicesElement = document.getElementById("choices");
@@ -530,38 +535,6 @@ function showQuestion() {
     choicesElement.appendChild(choiceElement);
   });
 }
-// const userChoices = []; // Array para armazenar as escolhas do usuário
-
-// function checkAnswer(e) {
-//   const selectedChoice = questions[currentQuestion].choices[e.target.value];
-//   const correctAnswer = questions[currentQuestion].answer[currentQuestion];
-
-//   // Armazena a escolha do usuário
-//   userChoices.push(selectedChoice);
-
-//   currentQuestion++;
-
-//   if (currentQuestion < questions.length) {
-//     showQuestion();
-//   } else {
-//     // Agora, você pode usar o array userChoices para construir a lógica de personalidade
-//     displayPersonality();
-//   }
-// }
-
-// function displayPersonality() {
-//   // Aqui você pode usar o array userChoices para determinar a personalidade com base nas escolhas
-//   console.log("Escolhas do usuário:", userChoices);
-
-//   // Lógica de personalidade: exemplo simples
-//   const personalityTraits = userChoices.join(", ");
-//   alert("Sua personalidade: " + personalityTraits);
-// }
-
-var empathetic = 0;
-var innovative = 0;
-var resilient = 0;
-var visionary = 0;
 
 function checkAnswer(e) {
   if (parseInt(e.target.value) === questions[currentQuestion].answer[0]) {
@@ -588,7 +561,6 @@ function checkAnswer(e) {
   } else {
     alert("Quiz completed!");
   }
-
   const pontuacoes = {
     empatico: empathetic,
     inovador: innovative,
@@ -596,18 +568,121 @@ function checkAnswer(e) {
     visionario: visionary,
   };
 
-  let personalidadeDominante;
+  let personalidadesIguais = [];
 
-  for (const [personalidade, pontuacao] of Object.entries(pontuacoes)) {
-    if (
-      pontuacao > pontuacoes[personalidadeDominante] ||
-      personalidadeDominante === undefined
-    ) {
-      personalidadeDominante = personalidade;
+  for (const [personalidade1, pontuacao1] of Object.entries(pontuacoes)) {
+    for (const [personalidade2, pontuacao2] of Object.entries(pontuacoes)) {
+      if (
+        personalidade1 !== personalidade2 &&
+        pontuacao1 > 0 &&
+        pontuacao1 === pontuacao2
+      ) {
+        personalidadesIguais.push(personalidade1, personalidade2);
+      }
     }
   }
+  //Quando personalidades tiverem a mesma quantidade
+  if (personalidadesIguais.length > 0) {
+    const personalidadeX = personalidadesIguais[0];
+    const personalidadeY = personalidadesIguais[1];
+    console.log(
+      `Suas personalidades são ${personalidadeX} e ${personalidadeY}`
+    );
+  } else {
+    console.log("Nenhuma personalidade com a mesma quantidade de pontos.");
+  }
+  for (const [personalidade, pontuacao] of Object.entries(pontuacoes)) {
+    //Quando algúem marcar 100% do questionário sendo a mesma opção
+    //Esse IF funciona!!!
+    if (pontuacao == 32) {
+      personalidadeDominante = personalidade;
+      console.log(`Você é ${personalidadeDominante}`);
+      if (empathetic) {
+        alert(
+          "Uma pessoa que demonstra grande capacidade de compreender e se conectar emocionalmente com os outros."
+        );
+      } else if (innovative) {
+        alert(
+          " Indivíduos criativos, sempre buscando novas ideias e soluções para desafios."
+        );
+      }
+      if (resilient) {
+        alert(
+          "Aqueles que lidam bem com adversidades, adaptando-se e superando obstáculos com determinação."
+        );
+      }
+      if (visionary) {
+        alert(
+          "Pessoas com uma perspectiva de longo prazo e habilidade para enxergar além do presente, planejando e buscando objetivos futuros."
+        );
+      }
+    }
 
-  console.log(`Você é ${personalidadeDominante}`);
+    //Quando algúem marcar 50% do questionário sendo a mesma opção
+    if (pontuacao == 16) {
+      personalidadeDominante = personalidade;
+      console.log(`Sua personalidade dominante é ${personalidadeDominante}`);
+    }
+
+    //Quando algúem marcar 25% do questionário sendo a mesma opção
+    if (pontuacao == 8) {
+      personalidadeDominante = personalidade;
+      console.log(`Sua personalidade subDominante é ${personalidadeDominante}`);
+    }
+  }
 }
+
+// function executeQuiz() {
+//   const pontuacoes = {
+//     empatico: empathetic,
+//     inovador: innovative,
+//     resiliente: resilient,
+//     visionario: visionary,
+//   };
+
+//   let personalidadesIguais = [];
+
+//   for (const [personalidade1, pontuacao1] of Object.entries(pontuacoes)) {
+//     for (const [personalidade2, pontuacao2] of Object.entries(pontuacoes)) {
+//       if (
+//         personalidade1 !== personalidade2 &&
+//         pontuacao1 > 0 &&
+//         pontuacao1 === pontuacao2
+//       ) {
+//         personalidadesIguais.push(personalidade1, personalidade2);
+//       }
+//     }
+//   }
+//   //Quando personalidades tiverem a mesma quantidade
+//   if (personalidadesIguais.length > 0) {
+//     const personalidadeX = personalidadesIguais[0];
+//     const personalidadeY = personalidadesIguais[1];
+//     console.log(
+//       `Suas personalidades são ${personalidadeX} e ${personalidadeY}`
+//     );
+//   } else {
+//     console.log("Nenhuma personalidade com a mesma quantidade de pontos.");
+//   }
+//   for (const [personalidade, pontuacao] of Object.entries(pontuacoes)) {
+//     //Quando algúem marcar 100% do questionário sendo a mesma opção
+//     if (pontuacao == 32) {
+//       personalidadeDominante = personalidade;
+//       console.log(`Você é ${personalidadeDominante}`);
+//     }
+//     //Quando algúem marcar 50% do questionário sendo a mesma opção
+//     if (pontuacao == 16) {
+//       personalidadeDominante = personalidade;
+//       console.log(`Sua personalidade dominante é ${personalidadeDominante}`);
+//     }
+//     //Quando algúem marcar 25% do questionário sendo a mesma opção
+//     if (pontuacao == 8) {
+//       personalidadeDominante = personalidade;
+//       console.log(`Sua personalidade subDominante é ${personalidadeDominante}`);
+//     }
+//   }
+// }
+
+// var finish = document.getElementById("finish");
+// finish.addEventListener("click", executeQuiz);
 
 showQuestion();
