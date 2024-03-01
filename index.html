@@ -15,11 +15,19 @@
     <title>QUIZ</title>
   </head>
   <body>
-    <div id="quiz-container">
-      <div id="question"></div>
-      <div id="choices"></div>
-      <button id="next">Next</button>
-      <button id="finish">Finish</button>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 mt-5">
+          <div id="quiz-container">
+            <div id="question"></div>
+            <div id="choices"></div>
+            <button class="nextButton" id="next">Próximo</button>
+            <!-- Esse button de finalizar deve aparecer apenas na última pergunta -->
+            <button class="finishButton" id="finish">Finalizar</button>
+            <div class="inResposta"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- JS -->

@@ -1,14 +1,7 @@
-1. **Empático:** Uma pessoa que demonstra grande capacidade de compreender e se conectar emocionalmente com os outros.
+- Tomar uma decisão sobre como vai ser o calculo das personalidades
 
-2. **Inovador:** Indivíduos criativos, sempre buscando novas ideias e soluções para desafios.
+- Escolher uma forma de como vai ser a exbição do resultado da personalidade
 
-3. **Resiliente:** Aqueles que lidam bem com adversidades, adaptando-se e superando obstáculos com determinação.
+- Definir um PRE LOADER
 
-4. **Visionário:** Pessoas com uma perspectiva de longo prazo e habilidade para enxergar além do presente, planejando e buscando objetivos futuros.
-
-Empático , Inovador , Resiliente, Visionário
-
-const empathetic
-const innovative
-const resilient
-const visionary
+- Finalizar o projeto com a sua estilização (Mobile First)
