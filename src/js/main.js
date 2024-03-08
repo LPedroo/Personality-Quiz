@@ -515,10 +515,7 @@ const questions = [
 
 let currentQuestion = 0;
 
-var empathetic = 0;
-var innovative = 0;
-var resilient = 0;
-var visionary = 0;
+var empathetic, innovative, resilient, visionary;
 
 function showQuestion() {
   const questionElement = document.getElementById("question");
@@ -538,22 +535,27 @@ function showQuestion() {
 }
 
 function checkAnswer(e) {
-  if (parseInt(e.target.value) === questions[currentQuestion].answer[0]) {
-    empathetic++;
-  }
+  const selectedOption = parseInt(e.target.value);
+  const answer = questions[currentQuestion].answer;
 
-  if (parseInt(e.target.value) === questions[currentQuestion].answer[1]) {
-    innovative++;
+  // Incrementar as pontuações correspondentes
+  for (let i = 0; i < answer.length; i++) {
+    if (selectedOption === answer[i]) {
+      switch (i) {
+        case 0:
+          break;
+        case 1:
+          break;
+        case 2:
+          break;
+        case 3:
+          break;
+        default:
+          break;
+      }
+      console.log(selectedOption);
+    }
   }
-
-  if (parseInt(e.target.value) === questions[currentQuestion].answer[2]) {
-    resilient++;
-  }
-
-  if (parseInt(e.target.value) === questions[currentQuestion].answer[3]) {
-    visionary++;
-  }
-  console.log(empathetic, innovative, resilient, visionary);
 
   currentQuestion++;
 
@@ -562,94 +564,34 @@ function checkAnswer(e) {
   } else {
     alert("Quiz completed!");
   }
-  const pontuacoes = {
+
+  const personalityScores = {
     empatico: empathetic,
     inovador: innovative,
     resiliente: resilient,
     visionario: visionary,
   };
 
-  let personalidadesIguais = [];
+  let dominantPersonality = null;
+  let subDominantPersonality = null;
 
-  // Comparar cada personalidade com todas as outras para encontrar aquelas com a mesma pontuação
-  for (const [personalidade1, pontuacao1] of Object.entries(pontuacoes)) {
-    for (const [personalidade2, pontuacao2] of Object.entries(pontuacoes)) {
-      if (
-        personalidade1 !== personalidade2 && // Garante que não estamos comparando a mesma personalidade
-        pontuacao1 > 0 && // Verifica se a pontuação não é zero (foi escolhida pelo menos uma vez)
-        pontuacao1 === pontuacao2 && // Verifica se as pontuações são iguais
-        !personalidadesIguais.includes(personalidade1) && // Verifica se a personalidade já não está no array
-        !personalidadesIguais.includes(personalidade2)
-      ) {
-        personalidadesIguais.push(personalidade1, personalidade2);
-      }
+  // Verificar personalidade dominante e subdominante
+  for (const [personality, score] of Object.entries(personalityScores)) {
+    if (score >= 24) {
+      dominantPersonality = personality;
+    } else if (score >= 8 && !subDominantPersonality) {
+      subDominantPersonality = personality;
     }
   }
 
-  if (personalidadesIguais.length > 0) {
-    let personalidadesString = "Suas personalidades são ";
-    for (let i = 0; i < personalidadesIguais.length; i++) {
-      personalidadesString += personalidadesIguais[i];
-      if (i < personalidadesIguais.length - 1) {
-        personalidadesString += ", "; // Adiciona uma vírgula entre as personalidades, exceto na última
-      }
-    }
-    console.log(personalidadesString);
+  // Mostrar mensagens de acordo com as personalidades identificadas
+  if (dominantPersonality) {
+    console.log(`Sua personalidade dominante é ${dominantPersonality}`);
+    // Aqui você pode adicionar alertas ou outras ações dependendo da personalidade dominante
   }
-
-  if (personalidadesIguais.length > 0) {
-    let personalidadesString = "Suas personalidades são ";
-    for (let i = 0; i < personalidadesIguais.length; i++) {
-      personalidadesString += personalidadesIguais[i];
-      if (i < personalidadesIguais.length - 1) {
-        personalidadesString += ", "; // Adiciona uma vírgula entre as personalidades, exceto na última
-      }
-    }
-    console.log(personalidadesString);
-  }
-
-  for (const [personalidade, pontuacao] of Object.entries(pontuacoes)) {
-    //Quando algúem marcar 100% do questionário sendo a mesma opção
-    if (pontuacao == 32) {
-      personalidadeDominante = personalidade;
-      console.log(`Você é ${personalidadeDominante}`);
-      if (empathetic) {
-        alert(
-          "Uma pessoa que demonstra grande capacidade de compreender e se conectar emocionalmente com os outros."
-        );
-      } else if (innovative) {
-        alert(
-          " Indivíduos criativos, sempre buscando novas ideias e soluções para desafios."
-        );
-      }
-      if (resilient) {
-        alert(
-          "Aqueles que lidam bem com adversidades, adaptando-se e superando obstáculos com determinação."
-        );
-      }
-      if (visionary) {
-        alert(
-          "Pessoas com uma perspectiva de longo prazo e habilidade para enxergar além do presente, planejando e buscando objetivos futuros."
-        );
-      }
-    }
-
-    //Quando algúem marcar 75% ou mais do questionário sendo a mesma opção
-    if (pontuacao >= 24) {
-      personalidadeDominante = personalidade;
-      console.log(`Sua personalidade DOMINANTE é ${personalidadeDominante}`);
-    }
-    //Quando algúem marcar 50% do questionário sendo a mesma opção
-    if (pontuacao > 16 && pontuacao < 24) {
-      personalidadeDominante = personalidade;
-      console.log(`Sua personalidade dominante é ${personalidadeDominante}`);
-    }
-
-    //Quando algúem marcar 25% do questionário sendo a mesma opção
-    if (pontuacao > 8 && pontuacao < 16) {
-      personalidadeDominante = personalidade;
-      console.log(`Sua personalidade subDominante é ${personalidadeDominante}`);
-    }
+  if (subDominantPersonality) {
+    console.log(`Sua personalidade subdominante é ${subDominantPersonality}`);
+    // Aqui você pode adicionar alertas ou outras ações dependendo da personalidade subdominante
   }
 }
 
