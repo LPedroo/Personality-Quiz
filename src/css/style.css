@@ -37,3 +37,12 @@
 #choices {
   margin: 20px 0;
 }
+
+.resposta {
+  margin-top: 20%;
+  text-align: center;
+}
+
+.secondContents {
+  display: none;
+}

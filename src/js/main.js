@@ -515,7 +515,12 @@ const questions = [
 
 let currentQuestion = 0;
 
-var empathetic, innovative, resilient, visionary;
+var empathetic = 0;
+var innovative = 0;
+var resilient = 0;
+var visionary = 0;
+
+var inResposta = document.getElementById("inResposta");
 
 function showQuestion() {
   const questionElement = document.getElementById("question");
@@ -543,56 +548,159 @@ function checkAnswer(e) {
     if (selectedOption === answer[i]) {
       switch (i) {
         case 0:
+          console.log(
+            `\n Empático: ${++empathetic};\n Inovador: ${innovative};\n Resiliente: ${resilient};\n Visionário: ${visionary}`
+          );
           break;
         case 1:
+          console.log(
+            `\n Empático: ${empathetic};\n Inovador: ${++innovative};\n Resiliente: ${resilient};\n Visionário: ${visionary}`
+          );
           break;
         case 2:
+          console.log(
+            `\n Empático: ${empathetic};\n Inovador: ${innovative};\n Resiliente: ${++resilient};\n Visionário: ${visionary}`
+          );
           break;
         case 3:
+          console.log(
+            `\n Empático: ${empathetic};\n Inovador: ${innovative};\n Resiliente: ${resilient};\n Visionário: ${++visionary}`
+          );
           break;
         default:
           break;
       }
-      console.log(selectedOption);
     }
   }
-
   currentQuestion++;
+
+  // IF´s pra quando um personalidades obtiver 100%
+  ifVerificationOneHundred();
+
+  // IF´s que fazem a soma para comparação
+  ifSumVerification();
+
+  // IF´s pra quando um personalidades forem  iguais a 25%
+  ifVerificationDiversity();
 
   if (currentQuestion < questions.length) {
     showQuestion();
   } else {
-    alert("Quiz completed!");
-  }
-
-  const personalityScores = {
-    empatico: empathetic,
-    inovador: innovative,
-    resiliente: resilient,
-    visionario: visionary,
-  };
-
-  let dominantPersonality = null;
-  let subDominantPersonality = null;
-
-  // Verificar personalidade dominante e subdominante
-  for (const [personality, score] of Object.entries(personalityScores)) {
-    if (score >= 24) {
-      dominantPersonality = personality;
-    } else if (score >= 8 && !subDominantPersonality) {
-      subDominantPersonality = personality;
-    }
-  }
-
-  // Mostrar mensagens de acordo com as personalidades identificadas
-  if (dominantPersonality) {
-    console.log(`Sua personalidade dominante é ${dominantPersonality}`);
-    // Aqui você pode adicionar alertas ou outras ações dependendo da personalidade dominante
-  }
-  if (subDominantPersonality) {
-    console.log(`Sua personalidade subdominante é ${subDominantPersonality}`);
-    // Aqui você pode adicionar alertas ou outras ações dependendo da personalidade subdominante
   }
 }
 
 showQuestion();
+function ifVerificationOneHundred() {
+  if (currentQuestion == 32 && empathetic == 32) {
+    inResposta.textContent = "Sua personalidade é Empatico ";
+    inResposta.focus();
+  }
+
+  if (currentQuestion == 32 && innovative == 32) {
+    inResposta.textContent = "Sua personalidade é Inovador";
+
+    inResposta.focus();
+  }
+
+  if (currentQuestion == 32 && resilient == 32) {
+    inResposta.textContent = "Sua personalidade é Inovador";
+
+    inResposta.focus();
+  }
+
+  if (currentQuestion == 32 && visionary == 32) {
+    inResposta.textContent = "Sua personalidade é Inovador";
+
+    inResposta.focus();
+  }
+}
+
+function ifSumVerification() {
+  if (
+    currentQuestion == 32 &&
+    empathetic + innovative > resilient + visionary
+  ) {
+    inResposta.textContent = "Sua personalidade é Empatico com Inovador";
+    inResposta.focus();
+  }
+
+  if (
+    currentQuestion == 32 &&
+    empathetic + resilient > innovative + visionary
+  ) {
+    inResposta.textContent = "Sua personalidade é  Empatico com Resiliente";
+    inResposta.focus();
+  }
+
+  if (
+    currentQuestion == 32 &&
+    empathetic + visionary > resilient + innovative
+  ) {
+    inResposta.textContent = "Sua personalidade é Empatico com Visionário";
+    inResposta.focus();
+  }
+
+  if (
+    currentQuestion == 32 &&
+    innovative + resilient > empathetic + visionary
+  ) {
+    inResposta.textContent = "Sua personalidade é  Inovador com Resiliente";
+    inResposta.focus();
+  }
+
+  if (
+    currentQuestion == 32 &&
+    innovative + visionary > resilient + empathetic
+  ) {
+    inResposta.textContent = "Sua personalidade é Inovador com Visionário";
+    inResposta.focus();
+  }
+
+  if (
+    currentQuestion == 32 &&
+    resilient + visionary > empathetic + innovative
+  ) {
+    inResposta.textContent = "Sua personalidade é Resiliente com Visionário";
+    inResposta.focus();
+  }
+}
+
+function ifVerificationDiversity() {
+  if (
+    currentQuestion == 32 &&
+    empathetic == 8 &&
+    innovative == 8 &&
+    resilient == 8 &&
+    visionary == 8
+  ) {
+    inResposta.textContent = "Sua personalidade é Bipolar";
+    inResposta.focus();
+  }
+}
+
+const finish = document.getElementById("finish");
+
+finish.addEventListener("click", () => {
+  if (currentQuestion == 32) {
+    alert("Quiz completo");
+
+    var firstContents = document.getElementsByClassName("firstContent");
+    for (let i = 0; i < firstContents.length; i++) {
+      firstContents[i].style.display = "none";
+    }
+  }
+
+  var secondContents = document.getElementsByClassName("secondContents");
+  for (let i = 0; i < secondContents.length; i++) {
+    secondContents[i].style.display = "initial";
+  }
+
+  if (currentQuestion < 32) {
+    confirm(
+      "Tem certeza que deseja finalizar seu Quiz? \nEle ainda está incompleto :("
+    );
+    if (confirm) {
+      location.reload();
+    }
+  }
+});

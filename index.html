@@ -18,19 +18,22 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 offset-md-3 mt-5">
-          <div id="quiz-container">
-            <div id="question"></div>
-            <div id="choices"></div>
-            <button class="nextButton" id="next">Próximo</button>
-            <!-- Esse button de finalizar deve aparecer apenas na última pergunta -->
-            <button class="finishButton" id="finish">Finalizar</button>
-            <div class="inResposta"></div>
+          <div class="firstContent">
+            <div id="quiz-container">
+              <div id="question"></div>
+              <div id="choices"></div>
+              <button class="nextButton" id="next">Próximo</button>
+              <button class="finishButton" id="finish">Finalizar</button>
+            </div>
+          </div>
+          <div class="secondContents">
+            <h4 class="resposta" id="inResposta"></h4>
           </div>
         </div>
       </div>
     </div>
-
     <!-- JS -->
+
     <script src="./src/js/main.js"></script>
     <!-- BOOTSTRAP -->
     <script

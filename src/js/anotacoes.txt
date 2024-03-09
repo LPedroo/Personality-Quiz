@@ -1,8 +1,6 @@
-- Tomar uma decisão sobre como vai ser o calculo das personalidades
+- Testar e ajustar os IF´s
 
 - Escolher uma forma de como vai ser a exbição do resultado da personalidade
-
-- Definir um PRE LOADER
 
 - Finalizar o projeto com a sua estilização (Mobile First)
 
