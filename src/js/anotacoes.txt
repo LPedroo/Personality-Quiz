@@ -2,6 +2,8 @@
 
 - Escolher uma forma de como vai ser a exbição do resultado da personalidade
 
+- Formulário de FeedBack & Colocar seu nome na entrada antes de responder o Quiz
+
 - Finalizar o projeto com a sua estilização (Mobile First)
 
 
