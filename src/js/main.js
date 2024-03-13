@@ -65,7 +65,7 @@ const questions = [
   },
 
   {
-    question: "5)Qual é o seu maior medo?",
+    question: "5) Qual é o seu maior medo?",
 
     choices: [
       " Perder pessoas importantes da minha vida ",
@@ -449,7 +449,7 @@ const questions = [
   },
 
   {
-    question: "29)Como você se sente em relação a mudanças de planos?",
+    question: "29) Como você se sente em relação a mudanças de planos?",
 
     choices: [
       " Valorizo a adaptabilidade",
@@ -497,7 +497,7 @@ const questions = [
   },
 
   {
-    question: "32)O que mais te motiva a aprender algo novo?",
+    question: "32) O que mais te motiva a aprender algo novo?",
 
     choices: [
       " A oportunidade de compartilhar a experiência",
@@ -574,109 +574,64 @@ function checkAnswer(e) {
   }
   currentQuestion++;
 
-  // IF´s pra quando um personalidades obtiver 100%
-  ifVerificationOneHundred();
-
-  // IF´s que fazem a soma para comparação
-  ifSumVerification();
-
-  // IF´s pra quando um personalidades forem  iguais a 25%
-  ifVerificationDiversity();
-
   if (currentQuestion < questions.length) {
     showQuestion();
-  } else {
+  }
+
+  var finishButton = document.getElementsByClassName("finishButton");
+
+  if (currentQuestion == 32) {
+    for (let i = 0; i < finishButton.length; i++) {
+      finishButton[i].style.display = "initial";
+      finishButton[i].style.background = "#0b66c3 !important";
+      finishButton[i].style.padding = "2%";
+      finishButton[i].style.border = "2px solid rgba(0, 0, 0, 0.2)";
+      finishButton[i].style.overflowY = "auto";
+      finishButton[i].style.overflowX = "hidden";
+      finishButton[i].style.position = "relative";
+      finishButton[i].style.borderRadius = "18px";
+      finishButton[i].style.boxShadow = "0 5px 10px rgba(0, 0, 0, 0.2)";
+      finishButton[i].style.margin = "5% 0 0 0";
+      finishButton[i].style.width = "35%";
+      finishButton[i].style.marginLeft = "33.33%";
+    }
+  }
+  //Chama a função para verificar a personalidade
+  ifsVerification();
+}
+
+function ifsVerification() {
+  if (empathetic === 32) {
+    inResposta.textContent = "Sua personalidade é Empático";
+  } else if (innovative === 32) {
+    inResposta.textContent = "Sua personalidade é Inovador";
+  } else if (resilient === 32) {
+    inResposta.textContent = "Sua personalidade é Resiliente";
+  } else if (visionary === 32) {
+    inResposta.textContent = "Sua personalidade é Visionário";
+  } else if (empathetic + innovative > resilient + visionary) {
+    inResposta.textContent = "Sua personalidade é Empático com Inovador";
+  } else if (empathetic + resilient > innovative + visionary) {
+    inResposta.textContent = "Sua personalidade é Empático com Resiliente";
+  } else if (empathetic + visionary > resilient + innovative) {
+    inResposta.textContent = "Sua personalidade é Empático com Visionário";
+  } else if (innovative + resilient > empathetic + visionary) {
+    inResposta.textContent = "Sua personalidade é Inovador com Resiliente";
+  } else if (innovative + visionary > empathetic + resilient) {
+    inResposta.textContent = "Sua personalidade é Inovador com Visionário";
+  } else if (resilient + visionary > empathetic + innovative) {
+    inResposta.textContent = "Sua personalidade é Resiliente com Visionário";
+  } else if (
+    empathetic === 8 &&
+    innovative === 8 &&
+    resilient === 8 &&
+    visionary === 8
+  ) {
+    inResposta.textContent = "Sua personalidade é Bipolar";
   }
 }
 
 showQuestion();
-function ifVerificationOneHundred() {
-  if (currentQuestion == 32 && empathetic == 32) {
-    inResposta.textContent = "Sua personalidade é Empatico ";
-    inResposta.focus();
-  }
-
-  if (currentQuestion == 32 && innovative == 32) {
-    inResposta.textContent = "Sua personalidade é Inovador";
-
-    inResposta.focus();
-  }
-
-  if (currentQuestion == 32 && resilient == 32) {
-    inResposta.textContent = "Sua personalidade é Inovador";
-
-    inResposta.focus();
-  }
-
-  if (currentQuestion == 32 && visionary == 32) {
-    inResposta.textContent = "Sua personalidade é Inovador";
-
-    inResposta.focus();
-  }
-}
-
-function ifSumVerification() {
-  if (
-    currentQuestion == 32 &&
-    empathetic + innovative > resilient + visionary
-  ) {
-    inResposta.textContent = "Sua personalidade é Empatico com Inovador";
-    inResposta.focus();
-  }
-
-  if (
-    currentQuestion == 32 &&
-    empathetic + resilient > innovative + visionary
-  ) {
-    inResposta.textContent = "Sua personalidade é  Empatico com Resiliente";
-    inResposta.focus();
-  }
-
-  if (
-    currentQuestion == 32 &&
-    empathetic + visionary > resilient + innovative
-  ) {
-    inResposta.textContent = "Sua personalidade é Empatico com Visionário";
-    inResposta.focus();
-  }
-
-  if (
-    currentQuestion == 32 &&
-    innovative + resilient > empathetic + visionary
-  ) {
-    inResposta.textContent = "Sua personalidade é  Inovador com Resiliente";
-    inResposta.focus();
-  }
-
-  if (
-    currentQuestion == 32 &&
-    innovative + visionary > resilient + empathetic
-  ) {
-    inResposta.textContent = "Sua personalidade é Inovador com Visionário";
-    inResposta.focus();
-  }
-
-  if (
-    currentQuestion == 32 &&
-    resilient + visionary > empathetic + innovative
-  ) {
-    inResposta.textContent = "Sua personalidade é Resiliente com Visionário";
-    inResposta.focus();
-  }
-}
-
-function ifVerificationDiversity() {
-  if (
-    currentQuestion == 32 &&
-    empathetic == 8 &&
-    innovative == 8 &&
-    resilient == 8 &&
-    visionary == 8
-  ) {
-    inResposta.textContent = "Sua personalidade é Bipolar";
-    inResposta.focus();
-  }
-}
 
 const finish = document.getElementById("finish");
 
@@ -690,10 +645,12 @@ finish.addEventListener("click", () => {
     }
   }
 
-  var secondContents = document.getElementsByClassName("secondContents");
-  for (let i = 0; i < secondContents.length; i++) {
-    secondContents[i].style.display = "initial";
-  }
+  setTimeout(() => {
+    var secondContents = document.getElementsByClassName("secondContents");
+    for (let i = 0; i < secondContents.length; i++) {
+      secondContents[i].style.display = "block";
+    }
+  }, 2000);
 
   if (currentQuestion < 32) {
     confirm(

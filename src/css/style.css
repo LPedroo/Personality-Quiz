@@ -3,10 +3,7 @@
   color: #fff;
 }
 
-.nextButton,
-.finishButton,
 .choiceButton {
-  background-color: #0b66c3 !important;
   padding: 2%;
   border: 2px solid rgba(0, 0, 0, 0.2) !important;
   overflow-y: auto !important;
@@ -16,15 +13,15 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) !important;
 }
 
-.nextButton,
-.finishButton {
-  margin: 5% 0 0 0;
-  width: 35%;
+.finishButton,
+.choiceButton {
+  background-color: #0b66c3 !important;
 }
 
-.nextButton {
-  margin-right: 29%;
+.finishButton {
+  display: none;
 }
+
 .choiceButton {
   margin: 1.5%;
   width: 100%;
