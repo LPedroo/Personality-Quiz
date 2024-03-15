@@ -1,9 +1,15 @@
 * {
   background-color: #212529 !important;
   color: #fff;
+  font-family: "Kanit", sans-serif;
 }
 
-.choiceButton {
+/* ==========================================================================
+   COMMON ELEMENTS
+   ========================================================================== */
+.choiceButton,
+.submitButton,
+input {
   padding: 2%;
   border: 2px solid rgba(0, 0, 0, 0.2) !important;
   overflow-y: auto !important;
@@ -14,8 +20,48 @@
 }
 
 .finishButton,
+.submitButton,
 .choiceButton {
   background-color: #0b66c3 !important;
+}
+
+/* ==========================================================================
+   COMMON ELEMENTS
+   ========================================================================== */
+
+.welcomeText {
+  margin: 2% 0 0 30%;
+}
+
+.welcomeText h1 {
+  margin-left: 8%;
+  font-weight: 700;
+}
+
+.welcomeText h5 {
+  margin-top: 2%;
+  font-weight: 300;
+}
+
+.form {
+  height: 350px;
+  border: 2px solid rgba(0, 0, 0, 0.2) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.content {
+  margin: 10% 0 0 10%;
+}
+
+input {
+  width: 70%;
+}
+
+.submitButton {
+  width: 30%;
+  margin-top: 10%;
+  margin-left: 30%;
 }
 
 .finishButton {
@@ -35,7 +81,7 @@
   margin: 20px 0;
 }
 
-.resposta {
+.answer {
   margin-top: 20%;
   text-align: center;
 }

@@ -520,7 +520,63 @@ var innovative = 0;
 var resilient = 0;
 var visionary = 0;
 
-var inResposta = document.getElementById("inResposta");
+var inAnswer = document.getElementById("inAnswer");
+var inSummary = document.getElementById("inSummary");
+//Efeito de digitação na frase
+var string = "Seja Bem Vindo(a) ao nosso Quiz de Personalidade";
+var array = string.split("");
+var timer;
+
+function frameLooper() {
+  if (array.length > 0) {
+    document.getElementById("textEffect").textContent += array.shift();
+  } else {
+    clearTimeout(timer);
+  }
+  loopTimer = setTimeout("frameLooper()", 70);
+}
+frameLooper();
+
+function checkForm() {
+  var inNome = document.getElementById("inNome");
+  var inEmail = document.getElementById("inEmail");
+
+  var nome = inNome.value;
+  var email = inEmail.value;
+
+  if (nome == "") {
+    alert("Por favor, informe seu nome para prosseguir.");
+    inNome.focus();
+    return;
+  }
+
+  if (email == "" || !email.includes("@")) {
+    alert("Por favor, informe seu email corretamente.");
+    inEmail.focus();
+    return;
+  }
+
+  var nomeUsuario = { nome: nome };
+  var emailUsuario = { email: email };
+
+  localStorage.setItem("Nome", nome);
+  localStorage.setItem("Email", email);
+
+  var form = document.getElementsByClassName("form");
+  for (let i = 0; i < form.length; i++) {
+    form[i].style.display = "none";
+  }
+
+  var textTyped = document.getElementsByClassName("textTyped");
+  for (let i = 0; i < textTyped.length; i++) {
+    textTyped[i].style.display = "none";
+  }
+
+  showQuestion();
+}
+
+var inSubmit = document.getElementById("inSubmit");
+inSubmit.addEventListener("click", checkForm);
 
 function showQuestion() {
   const questionElement = document.getElementById("question");
@@ -601,37 +657,60 @@ function checkAnswer(e) {
 }
 
 function ifsVerification() {
+  var nomeUsuario = localStorage.getItem("Nome");
   if (empathetic === 32) {
-    inResposta.textContent = "Sua personalidade é Empático";
+    inAnswer.textContent = `Parabéns ${nomeUsuario}! Sua personalidade é Empático`;
+    inSummary.textContent = ``;
   } else if (innovative === 32) {
-    inResposta.textContent = "Sua personalidade é Inovador";
+    inAnswer.textContent = `Parabéns ${nomeUsuario}!\n Sua personalidade é Inovador`;
+    inSummary.textContent = ``;
   } else if (resilient === 32) {
-    inResposta.textContent = "Sua personalidade é Resiliente";
+    inAnswer.textContent = `Parabéns ${nomeUsuario}!\n Sua personalidade é Resiliente`;
+    inSummary.textContent = ``;
   } else if (visionary === 32) {
-    inResposta.textContent = "Sua personalidade é Visionário";
+    inAnswer.textContent = `Parabéns ${nomeUsuario}!\n Sua personalidade é Visionário`;
+    inSummary.textContent = ``;
   } else if (empathetic + innovative > resilient + visionary) {
-    inResposta.textContent = "Sua personalidade é Empático com Inovador";
+    inAnswer.textContent = `Parabéns ${nomeUsuario}!\n Sua personalidade é Empático com Inovador`;
+    inSummary.textContent = `Você seria aquele tipo de pessoa que não só entende as emoções e perspectivas dos outros, mas também usa essa compreensão para encontrar soluções inovadoras que beneficiem a todos. Sua empatia serviria como uma fonte de inspiração e motivação para suas ideias inovadoras, impulsionando você a criar soluções que sejam verdadeiramente significativas e impactantes. Além disso, sua capacidade de inovar seria amplificada pela sua empatia, pois você estaria constantemente considerando como suas ideias afetariam as pessoas ao seu redor e procuraria maneiras de torná-las inclusivas e benéficas para todos.`;
   } else if (empathetic + resilient > innovative + visionary) {
-    inResposta.textContent = "Sua personalidade é Empático com Resiliente";
+    inAnswer.textContent = `Parabéns ${nomeUsuario}!\n Sua personalidade é Empático com Resiliente`;
+    inSummary.textContent = `Sua empatia permitiria que você entendesse profundamente as emoções e as experiências dos outros, o que o tornaria um ótimo ouvinte e um apoio confiável para aqueles ao seu redor. Você seria capaz de oferecer conforto, compreensão e apoio genuíno quando necessário, sendo uma fonte de força e compaixão para os outros em tempos difíceis.
+    Além disso, sua resiliência significaria que você não apenas seria capaz de lidar com suas próprias lutas e desafios pessoais, mas também seria capaz de ajudar os outros a encontrar sua própria força interior e superar obstáculos. Você veria as dificuldades como oportunidades de crescimento e aprendizado, e sua capacidade de se adaptar e se recuperar rapidamente o tornaria uma fonte de inspiração para os outros.
+    `;
   } else if (empathetic + visionary > resilient + innovative) {
-    inResposta.textContent = "Sua personalidade é Empático com Visionário";
+    inAnswer.textContent = `Parabéns ${nomeUsuario}!\n Sua personalidade é Empático com Visionário`;
+    inSummary.textContent = `Sua empatia seria a base de sua visão, permitindo que você enxergasse além das situações presentes e entendesse como suas ações poderiam afetar as pessoas ao seu redor. Você seria capaz de se colocar no lugar dos outros e considerar suas perspectivas ao planejar e buscar objetivos de longo prazo.
+    Além disso, sua visão de futuro alimentaria sua empatia, inspirando-o a buscar soluções inovadoras e inclusivas que beneficiem não apenas o presente, mas também o futuro das pessoas. Você seria capaz de imaginar um mundo melhor e trabalhar ativamente para tornar essa visão uma realidade, sempre mantendo em mente o impacto humano de suas escolhas e ações.
+    `;
   } else if (innovative + resilient > empathetic + visionary) {
-    inResposta.textContent = "Sua personalidade é Inovador com Resiliente";
+    inAnswer.textContent = `Parabéns ${nomeUsuario}!\n Sua personalidade é Inovador com Resiliente`;
+    inSummary.textContent = `Sua natureza inovadora significaria que você está sempre procurando por soluções criativas e originais para os problemas que enfrenta. Você não se contenta com o status quo e está sempre buscando maneiras de melhorar e avançar, mesmo quando as coisas ficam difíceis.
+    Além disso, sua resiliência seria a força motriz por trás de sua inovação, permitindo que você enfrente falhas e contratempos com coragem e determinação. Você veria os desafios como oportunidades de aprendizado e crescimento, e estaria disposto a persistir e se adaptar até encontrar uma solução.
+    
+    `;
   } else if (innovative + visionary > empathetic + resilient) {
-    inResposta.textContent = "Sua personalidade é Inovador com Visionário";
+    inAnswer.textContent = `Parabéns ${nomeUsuario}!\n Sua personalidade é Inovador com Visionário`;
+    inSummary.textContent = `Como inovador, você estaria sempre na vanguarda, explorando novas possibilidades e desenvolvendo soluções criativas para os desafios de hoje. Sua mente está constantemente gerando ideias frescas e disruptivas, impulsionando a mudança e a evolução em diversos campos.
+    Com a visão de futuro, você vai além da inovação imediata e enxerga o quadro completo. Você tem uma compreensão clara de como suas ideias podem impactar o mundo ao longo do tempo e está sempre pensando adiante, imaginando um futuro melhor e mais promissor.
+    
+    `;
   } else if (resilient + visionary > empathetic + innovative) {
-    inResposta.textContent = "Sua personalidade é Resiliente com Visionário";
+    inAnswer.textContent = `Parabéns ${nomeUsuario}!\n Sua personalidade é Resiliente com Visionário`;
+    inSummary.textContent = `Sua resiliência seria uma fonte de força interior que o capacitaria a superar obstáculos e adversidades com persistência e otimismo. Mesmo diante das dificuldades, você seria capaz de se adaptar, aprender e crescer, transformando desafios em oportunidades de desenvolvimento pessoal e profissional.
+    Ao mesmo tempo, sua visão de futuro o impulsionaria a pensar além das circunstâncias presentes e a imaginar possibilidades emocionantes e transformadoras para o futuro. Você seria capaz de visualizar metas ambiciosas e inspiradoras e trabalhar incansavelmente para transformá-las em realidade, inspirando aqueles ao seu redor com sua determinação e visão.
+    
+    `;
   } else if (
     empathetic === 8 &&
     innovative === 8 &&
     resilient === 8 &&
     visionary === 8
   ) {
-    inResposta.textContent = "Sua personalidade é Bipolar";
+    inAnswer.textContent = `Parabéns ${nomeUsuario}! Sua personalidade`;
+    inSummary.textContent = ``;
   }
 }
-
-showQuestion();
 
 const finish = document.getElementById("finish");
 

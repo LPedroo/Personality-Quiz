@@ -12,12 +12,41 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <!-- FONTE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
     <title>QUIZ</title>
   </head>
+
   <body>
     <div class="container">
+      <div class="welcomeText">
+        <h1>Personality Quiz</h1>
+        <h5 class="textTyped" id="textEffect"></h5>
+      </div>
       <div class="row">
-        <div class="col-md-6 offset-md-3 mt-5">
+        <div class="form col-md-6 offset-md-3 mt-5">
+          <div class="content">
+            <p>
+              <label for="inNome">Nome:</label>
+              <input type="text" id="inNome" autofocus />
+            </p>
+            <br />
+            <p>
+              <label for="inEmail">Email:</label>
+              <input type="text" id="inEmail" autofocus />
+            </p>
+            <button class="submitButton" id="inSubmit">Começar</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 offset-md-3 mt-3">
           <div class="firstContent">
             <div id="quiz-container">
               <div id="question"></div>
@@ -26,7 +55,8 @@
             </div>
           </div>
           <div class="secondContents">
-            <h4 class="resposta" id="inResposta"></h4>
+            <h4 class="answer" id="inAnswer"></h4>
+            <span class="answerSummary" id="inSummary"></span>
           </div>
         </div>
       </div>
