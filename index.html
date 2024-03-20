@@ -19,11 +19,30 @@
       href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="/src/img/logoQuiz.jpg" type="image/x-icon">
     <title>QUIZ</title>
   </head>
 
   <body>
+    <nav>
+      <div class="container">
+        <div class="row mt-3">
+          <div class="divReturn col-md-2">
+       
+          <button id="homeButton">
+            VOLTAR AO ÍNICIO
+          </button>
+        
+      </div>
+      <div class="feedback col-md-6  offset-md-4">
+  <button id="feedbackButton">FEEDBACK</button>
+      </div>
+        </div>
+      </div>
+      
+      
+      </nav>
     <div class="container">
       <div class="welcomeText">
         <h1>Personality Quiz</h1>
@@ -54,13 +73,85 @@
               <button class="finishButton" id="finish">Finalizar</button>
             </div>
           </div>
-          <div class="secondContents">
+          <div class="secondContents"><div class="pyro">
+                <div class="before"></div>
+                <div class="after"></div>
             <h4 class="answer" id="inAnswer"></h4>
-            <span class="answerSummary" id="inSummary"></span>
+              <span class="answerSummary" id="inSummary"></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- FEEDBACK -->
+    <div class="feedbackSession">
+      <form action="https://formsubmit.co/pedroferreira0212@gmail.com" method="POST">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              required="required"
+              placeholder="Nome"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              required="required"
+              placeholder="Email"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+          
+            <input
+              type="text"
+              name="assunto"
+              class="form-control"
+              required="required"
+              placeholder="Assunto"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <textarea
+              name="message"
+              id="message"
+              required="required"
+              class="form-control"
+              rows="3"
+              placeholder="Mensagem"
+              maxlength="200"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-form ">
+             Enviar 
+            </button>
+          </div>
+        </div>
+      </div>
+      <input type="hidden" name="_subject" value="Novo Contato!">
+      <input type="text" name="_honey" style="display: none;">
+      <input type="hidden" name="_captcha" value="false">
+    </form>
+    </div>
+    
     <!-- JS -->
 
     <script src="./src/js/main.js"></script>

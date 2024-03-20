@@ -1,5 +1,13 @@
-- Escolher uma forma de como vai ser a exbição do resultado da personalidade
+- Diminuir o tamanho dos textos para que possam se ajustar ao CARD
 
-- Formulário de FeedBack 
+-Escolher um texto para o IF de "BIPOLAR"
+
+- Formulário de FeedBack {
+
+  - Estilizar
+}
+
 
 - Finalizar o projeto com a sua estilização (Mobile First)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!FAZER TESTE PARA FINALIZAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

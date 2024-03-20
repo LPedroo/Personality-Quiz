@@ -604,24 +604,20 @@ function checkAnswer(e) {
     if (selectedOption === answer[i]) {
       switch (i) {
         case 0:
-          console.log(
-            `\n Empático: ${++empathetic};\n Inovador: ${innovative};\n Resiliente: ${resilient};\n Visionário: ${visionary}`
-          );
+          ++empathetic, innovative, resilient, visionary;
+
           break;
         case 1:
-          console.log(
-            `\n Empático: ${empathetic};\n Inovador: ${++innovative};\n Resiliente: ${resilient};\n Visionário: ${visionary}`
-          );
+          empathetic, ++innovative, resilient, visionary;
+
           break;
         case 2:
-          console.log(
-            `\n Empático: ${empathetic};\n Inovador: ${innovative};\n Resiliente: ${++resilient};\n Visionário: ${visionary}`
-          );
+          empathetic, innovative, ++resilient, visionary;
+
           break;
         case 3:
-          console.log(
-            `\n Empático: ${empathetic};\n Inovador: ${innovative};\n Resiliente: ${resilient};\n Visionário: ${++visionary}`
-          );
+          empathetic, innovative, resilient, ++visionary;
+
           break;
         default:
           break;
@@ -660,16 +656,16 @@ function ifsVerification() {
   var nomeUsuario = localStorage.getItem("Nome");
   if (empathetic === 32) {
     inAnswer.textContent = `Parabéns ${nomeUsuario}! Sua personalidade é Empático`;
-    inSummary.textContent = ``;
+    inSummary.textContent = `Pessoas empáticas entendem e sentem as emoções alheias, são sensíveis às necessidades dos outros e se colocam no lugar deles. São solidárias, compassivas, atenciosas e expressam empatia através de gestos, palavras e ações de apoio.`;
   } else if (innovative === 32) {
     inAnswer.textContent = `Parabéns ${nomeUsuario}!\n Sua personalidade é Inovador`;
-    inSummary.textContent = ``;
+    inSummary.textContent = `Uma pessoa inovadora é criativa, curiosa e corajosa, capaz de gerar novas ideias e soluções, muitas vezes desafiando o status quo. Ela tem uma perspectiva única, é resiliente diante do fracasso e colabora efetivamente em equipe.`;
   } else if (resilient === 32) {
     inAnswer.textContent = `Parabéns ${nomeUsuario}!\n Sua personalidade é Resiliente`;
-    inSummary.textContent = ``;
+    inSummary.textContent = `Uma pessoa resiliente é aquela que pode se adaptar e se recuperar de desafios e dificuldades. Elas mantêm uma mentalidade positiva, são flexíveis e focadas em encontrar soluções para os problemas que enfrentam.`;
   } else if (visionary === 32) {
     inAnswer.textContent = `Parabéns ${nomeUsuario}!\n Sua personalidade é Visionário`;
-    inSummary.textContent = ``;
+    inSummary.textContent = `Uma pessoa visionária é alguém que tem uma capacidade especial de ver além do presente e imaginar possibilidades futuras. Elas têm uma clareza de visão sobre onde desejam estar no futuro e são capazes de articular essa visão de uma forma inspiradora. `;
   } else if (empathetic + innovative > resilient + visionary) {
     inAnswer.textContent = `Parabéns ${nomeUsuario}!\n Sua personalidade é Empático com Inovador`;
     inSummary.textContent = `Você seria aquele tipo de pessoa que não só entende as emoções e perspectivas dos outros, mas também usa essa compreensão para encontrar soluções inovadoras que beneficiem a todos. Sua empatia serviria como uma fonte de inspiração e motivação para suas ideias inovadoras, impulsionando você a criar soluções que sejam verdadeiramente significativas e impactantes. Além disso, sua capacidade de inovar seria amplificada pela sua empatia, pois você estaria constantemente considerando como suas ideias afetariam as pessoas ao seu redor e procuraria maneiras de torná-las inclusivas e benéficas para todos.`;
@@ -716,8 +712,6 @@ const finish = document.getElementById("finish");
 
 finish.addEventListener("click", () => {
   if (currentQuestion == 32) {
-    alert("Quiz completo");
-
     var firstContents = document.getElementsByClassName("firstContent");
     for (let i = 0; i < firstContents.length; i++) {
       firstContents[i].style.display = "none";
@@ -726,17 +720,42 @@ finish.addEventListener("click", () => {
 
   setTimeout(() => {
     var secondContents = document.getElementsByClassName("secondContents");
+    var divReturn = document.getElementsByClassName("divReturn");
+    var feedback = document.getElementsByClassName("feedback");
+
+    for (let i = 0; i < divReturn.length; i++) {
+      divReturn[i].style.display = "block";
+    }
+    for (let i = 0; i < feedback.length; i++) {
+      feedback[i].style.display = "block";
+    }
+
     for (let i = 0; i < secondContents.length; i++) {
       secondContents[i].style.display = "block";
     }
   }, 2000);
+});
 
-  if (currentQuestion < 32) {
-    confirm(
-      "Tem certeza que deseja finalizar seu Quiz? \nEle ainda está incompleto :("
-    );
-    if (confirm) {
-      location.reload();
+var homeButton = document.getElementById("homeButton");
+homeButton.addEventListener("click", () => {
+  location.reload();
+});
+
+var feedbackButton = document.getElementById("feedbackButton");
+feedbackButton.addEventListener("click", () => {
+  var firstContent = document.getElementsByClassName("firstContent");
+  var secondContents = document.getElementsByClassName("secondContents");
+  var feedbackSession = document.getElementsByClassName("feedbackSession");
+
+  if (currentQuestion == 32) {
+    for (let i = 0; i < firstContent.length; i++) {
+      firstContent[i].style.display = "none";
+    }
+    for (let i = 0; i < secondContents.length; i++) {
+      secondContents[i].style.display = "none";
+    }
+    for (let i = 0; i < feedbackSession.length; i++) {
+      feedbackSession[i].style.display = "initial";
     }
   }
 });
