@@ -704,7 +704,7 @@ function ifsVerification() {
     visionary === 8
   ) {
     inAnswer.textContent = `Parabéns ${nomeUsuario}! Sua personalidade`;
-    inSummary.textContent = ``;
+    inSummary.textContent = `Você é uma pessoa compassiva, criativa, resistente e orientada para o futuro. Você também é capaz de liderar e inspirar os outros, ao mesmo tempo em que mantêm um forte compromisso com a inovação e o progresso. Talvez pudesse ser descrito como um líder humanitário, um pioneiro visionário ou um agente de mudança resiliente.`;
   }
 }
 
@@ -755,7 +755,7 @@ feedbackButton.addEventListener("click", () => {
       secondContents[i].style.display = "none";
     }
     for (let i = 0; i < feedbackSession.length; i++) {
-      feedbackSession[i].style.display = "initial";
+      feedbackSession[i].style.display = "block";
     }
   }
 });

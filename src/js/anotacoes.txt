@@ -1,13 +1,3 @@
-- Diminuir o tamanho dos textos para que possam se ajustar ao CARD
-
--Escolher um texto para o IF de "BIPOLAR"
-
-- Formulário de FeedBack {
-
-  - Estilizar
-}
-
-
-- Finalizar o projeto com a sua estilização (Mobile First)
+- Ajustar o Mídia Query
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!FAZER TESTE PARA FINALIZAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

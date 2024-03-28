@@ -3,7 +3,12 @@
   color: #fff;
   font-family: "Kanit", sans-serif;
 }
-
+h2 {
+  color: #fff !important;
+  top: 35%;
+  left: 40%;
+  position: absolute;
+}
 /* ==========================================================================
    COMMON ELEMENTS
    ========================================================================== */
@@ -11,7 +16,8 @@
 #homeButton,
 .choiceButton,
 .submitButton,
-input {
+input,
+.btn-form {
   padding: 2%;
   border: 2px solid rgba(0, 0, 0, 0.2) !important;
   overflow-y: auto !important;
@@ -24,7 +30,8 @@ input {
 #homeButton,
 .finishButton,
 .submitButton,
-.choiceButton {
+.choiceButton,
+.btn-form {
   background-color: #0b66c3 !important;
 }
 #homeButton,
@@ -121,7 +128,35 @@ input {
 }
 
 .feedbackSession {
+  width: 50%;
+  margin-top: 5%;
   display: none;
+}
+
+.btn-form {
+  width: 20%;
+  padding: 1%;
+}
+.formName,
+.formEmail,
+.formSubject,
+.formTextArea {
+  margin-bottom: 5%;
+  width: 100%;
+}
+.formName,
+.formEmail {
+  padding: 7%;
+  height: 45px;
+}
+.formSubject {
+  padding: 3%;
+  height: 45px;
+}
+
+.formTextArea {
+  padding: 2%;
+  border-radius: 10px;
 }
 /* ==========================================================================
    FIREWORKS
