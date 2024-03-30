@@ -489,3 +489,88 @@ input {
     margin-left: 80%;
   }
 }
+
+/* ==========================================================================
+   MEDIA QUERIES
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+  .welcomeText {
+    width: 500px;
+    margin: 2% 0 0 10%;
+  }
+  .welcomeText h1 {
+    margin: 0 0 0 10%;
+  }
+  .welcomeText h5 {
+    font-size: 15px;
+    font-weight: 300;
+    margin: 0 0 0 10%;
+  }
+  #homeButton,
+  #feedbackButton {
+    width: 160px;
+    height: 50px;
+    padding: 2%;
+  }
+  #feedbackButton {
+    top: -100%;
+    left: 63%;
+  }
+
+  .formName,
+  .formEmail,
+  .formSubject {
+    width: 450px;
+    left: 35%;
+  }
+  .formTextArea {
+    margin-left: 45%;
+  }
+
+  .btn-form {
+    width: 130px;
+    left: 35%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .welcomeText {
+    width: 450px;
+    margin: 0%;
+  }
+  .welcomeText h1 {
+    margin: 0 0 0 25%;
+  }
+  .welcomeText h5 {
+    font-size: 15px;
+    font-weight: 300;
+    margin: 0 0 0 10%;
+  }
+  #homeButton,
+  #feedbackButton {
+    width: 150px;
+    height: 50px;
+    padding: 2%;
+  }
+  #feedbackButton {
+    top: -100%;
+    left: 63%;
+  }
+
+  .formName,
+  .formEmail,
+  .formSubject {
+    width: 350px;
+    left: 10%;
+  }
+  .formTextArea {
+    width: 350px;
+    margin-left: 10%;
+  }
+
+  .btn-form {
+    width: 130px;
+    left: 10%;
+  }
+}
